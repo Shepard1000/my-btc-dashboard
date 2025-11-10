@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BTCUSD Analytics</title>
+  <!-- Load Plotly -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  <h1>BTCUSD Analytics Dashboard</h1>
+
+  <!-- Bar chart -->
+  <div id="barChart" style="width:600px;height:400px;"></div>
+
+  <!-- Pie chart -->
+  <div id="pieChart" style="width:600px;height:400px;"></div>
+
+  <!-- Line chart -->
+  <div id="lineChart" style="width:600px;height:400px;"></div>
+
+  <!-- Histogram -->
+  <div id="histogram" style="width:600px;height:400px;"></div>
+
+  <script>
+    // Example data (replace with live API later)
+    const prices = [68000, 69000, 70000, 71000, 72000];
+    const volumes = [120, 150, 180, 200, 170];
+
+    // Bar chart: daily volume
+    Plotly.newPlot('barChart', [{
+      x: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+      y: volumes,
+      type: 'bar'
+    }], {title: 'Daily BTCUSD Volume'});
+
+    // Pie chart: win/loss breakdown
+    Plotly.newPlot('pieChart', [{
+      labels: ['Wins', 'Losses'],
+      values: [12, 8],
+      type: 'pie'
+    }], {title: 'Trade Outcomes'});
+
+    // Line chart: BTCUSD price trend
+    Plotly.newPlot('lineChart', [{
+      x: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+      y: prices,
+      type: 'scatter'
+    }], {title: 'BTCUSD Price Trend'});
+
+    // Histogram: distribution of returns
+    const returns = [0.5, -0.2, 1.0, -0.5, 0.3, 0.7, -0.1];
+    Plotly.newPlot('histogram', [{
+      x: returns,
+      type: 'histogram'
+    }], {title: 'Distribution of Trade Returns'});
+  </script>
+</body>
+</html>
