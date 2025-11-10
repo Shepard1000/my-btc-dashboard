@@ -9,16 +9,24 @@
 
   <div id="lineChart" style="width:800px;height:500px;"></div>
   <div id="volumeBar" style="width:800px;height:500px;"></div>
+  <div id="returnsHistogram" style="width:800px;height:500px;"></div>
 
   <script>
     async function loadData() {
-      const response = await fetch("https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1h&limit=50");
+      const response = await fetch("https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1h&limit=100");
       const data = await response.json();
 
       // Extract time, close price, and volume
       const times = data.map(candle => new Date(candle[0]));
       const closes = data.map(candle => parseFloat(candle[4]));
       const volumes = data.map(candle => parseFloat(candle[5]));
+
+      // Compute returns (% change between closes)
+      const returns = [];
+      for (let i = 1; i < closes.length; i++) {
+        const pctChange = ((closes[i] - closes[i-1]) / closes[i-1]) * 100;
+        returns.push(pctChange);
+      }
 
       // Line chart: BTCUSD closing prices
       Plotly.newPlot('lineChart', [{
@@ -36,6 +44,13 @@
         type: 'bar',
         marker: {color: 'orange'}
       }], {title: 'BTCUSD Volume (Binance feed)'});
+
+      // Histogram: distribution of returns
+      Plotly.newPlot('returnsHistogram', [{
+        x: returns,
+        type: 'histogram',
+        marker: {color: 'green'}
+      }], {title: 'Distribution of Hourly Returns (%)'});
     }
 
     loadData();
