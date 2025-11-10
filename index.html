@@ -2,9 +2,34 @@
 <html>
 <head>
   <title>BTCUSD Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    nav {
+      margin-bottom: 20px;
+      padding: 10px;
+      background: #f0f0f0;
+    }
+    nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #007acc;
+    }
+  </style>
 </head>
 <body>
-  <h1>BTCUSD Chart (Coinbase)</h1>
+  <h1>BTCUSD Dashboard (Coinbase)</h1>
+
+  <!-- Navigation bar -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="analytics.html">Analytics</a>
+    <a href="news.html">Crypto News</a>
+    <a href="journal.html">Journal</a>
+  </nav>
 
   <!-- TradingView Widget BEGIN -->
   <div class="tradingview-widget-container">
@@ -25,10 +50,5 @@
     </script>
   </div>
   <!-- TradingView Widget END -->
-
-  <!-- Navigation link to Analytics page -->
-  <p>
-    <a href="analytics.html">Go to Analytics Dashboard</a>
-  </p>
 </body>
 </html>
