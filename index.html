@@ -1,1 +1,28 @@
-Hello, BTCUSD
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BTCUSD Dashboard</title>
+</head>
+<body>
+  <h1>BTCUSD Chart</h1>
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    <div id="tradingview_chart"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+      new TradingView.widget({
+        "width": 980,
+        "height": 610,
+        "symbol": "BINANCE:BTCUSDT",
+        "interval": "60",
+        "timezone": "Etc/UTC",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "container_id": "tradingview_chart"
+      });
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+</body>
+</html>
