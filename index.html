@@ -5,6 +5,7 @@
 </head>
 <body>
   <h1>BTCUSD Chart (Coinbase)</h1>
+
   <!-- TradingView Widget BEGIN -->
   <div class="tradingview-widget-container">
     <div id="tradingview_chart"></div>
@@ -13,7 +14,7 @@
       new TradingView.widget({
         "width": 980,
         "height": 610,
-        "symbol": "COINBASE:BTCUSD",   // <-- changed here
+        "symbol": "COINBASE:BTCUSD",   // Coinbase ticker
         "interval": "60",
         "timezone": "Etc/UTC",
         "theme": "light",
@@ -24,5 +25,10 @@
     </script>
   </div>
   <!-- TradingView Widget END -->
+
+  <!-- Navigation link to Analytics page -->
+  <p>
+    <a href="analytics.html">Go to Analytics Dashboard</a>
+  </p>
 </body>
 </html>
