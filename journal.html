@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trade Journal</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    th { background-color: #f0f0f0; }
+    form { margin-top: 20px; }
+    input, select { margin: 5px; padding: 5px; }
+    button { padding: 5px 10px; }
+  </style>
+</head>
+<body>
+  <h1>BTCUSD Trade Journal</h1>
+
+  <!-- Form to add a trade -->
+  <form id="tradeForm">
+    <input type="date" id="date" required>
+    <input type="text" id="setup" placeholder="Setup (e.g. Breakout)" required>
+    <input type="number" id="entry" placeholder="Entry Price" step="0.01" required>
+    <input type="number" id="exit" placeholder="Exit Price" step="0.01" required>
+    <select id="result" required>
+      <option value="">Result</option>
+      <option value="Win">Win</option>
+      <option value="Loss">Loss</option>
+    </select>
+    <button type="submit">Add Trade</button>
+  </form>
+
+  <!-- Table to display trades -->
+  <table id="journalTable">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Setup</th>
+        <th>Entry</th>
+        <th>Exit</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const form = document.getElementById("tradeForm");
+    const tableBody = document.querySelector("#journalTable tbody");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const date = document.getElementById("date").value;
+      const setup = document.getElementById("setup").value;
+      const entry = document.getElementById("entry").value;
+      const exit = document.getElementById("exit").value;
+      const result = document.getElementById("result").value;
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${date}</td>
+        <td>${setup}</td>
+        <td>${entry}</td>
+        <td>${exit}</td>
+        <td>${result}</td>
+      `;
+      tableBody.appendChild(row);
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>
